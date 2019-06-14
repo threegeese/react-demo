@@ -1,3 +1,4 @@
+const h = React.createElement;
 let number = 0;
 
 let onClickButton = ()=> {
@@ -12,11 +13,11 @@ let onClickButton2 = ()=> {
 
 render();
 
-
 function render() {
-    let span = React.createElement('span', { className: "red" }, number);
-    let button = React.createElement('button', { onClick: onClickButton }, '+')
-    let button2 = React.createElement('button', { onClick: onClickButton2 }, '-')
-    let div = React.createElement('div', { className: 'parent' }, span, button, button2)
+    let div = h("div",{ className: "parent" },
+        h("span", { className: "red" }, number),
+        h("button", { onClick: onClickButton }, "+"),
+        h("button", { onClick: onClickButton2 }, "-")
+    );
     ReactDOM.render(div, document.querySelector("#root"));
 }
