@@ -32,8 +32,10 @@ class App extends React.Component {
                     <Rabbit castTime={this.state.cast_time1} />
                     <Tortoise castTime={this.state.case_time2} />
                 </div>
-                <Track1 reach={this.reach_1.bind(this)} />
-                <Track2 reach={this.reach_2.bind(this)} />
+                <Track
+                    reach_1={this.reach_1.bind(this)}
+                    reach_2={this.reach_2.bind(this)}
+                />
             </div>
         );
     }
@@ -71,6 +73,17 @@ class Tortoise extends React.Component {
     }
 }
 
+class Track extends React.Component {
+    render() {
+        return (
+            <div className="track">
+                <Track1 reach={this.props.reach_1} />
+                <Track2 reach={this.props.reach_2} />
+            </div>
+        );
+    }
+}
+
 class Track1 extends React.Component {
     constructor() {
         super();
@@ -101,7 +114,7 @@ class Track1 extends React.Component {
                         🐇
                     </span>
                 </div>
-                <div className="track" />
+                <div className="singletrack" />
             </div>
         );
     }
@@ -137,7 +150,7 @@ class Track2 extends React.Component {
                         🐢
                     </span>
                 </div>
-                <div className="track" />
+                <div className="singletrack" />
             </div>
         );
     }

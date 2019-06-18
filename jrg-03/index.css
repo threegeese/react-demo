@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 40px;
+}
+
+.race {
+    display: flex;
+    justify-content: center;
+}
+
+.track {
+    background: rgba(0, 128, 0, .4);
+}
+
+.singletrack {
+    border: 1px solid black;
+}
