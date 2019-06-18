@@ -6,26 +6,31 @@ class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            start: new Date()
+            start: new Date(),
+            cast_time1: 0,
+            case_time2: 0
         };
     }
     reach_1() {
-        console.log(
-            "兔子到达终点! 用时" + (new Date() - this.state.start) + "ms"
-        );
+        let end = new Date() - this.state.start;
+        this.setState({
+            cast_time1: end
+        });
+        console.log("兔子到达终点! 用时" + end + "ms");
     }
     reach_2() {
-        console.log(
-            "乌龟到达终点! 用时" + (new Date() - this.state.start) + "ms"
-        );
+        let end = new Date() - this.state.start;
+        this.setState({
+            case_time2: end
+        });
+        console.log("乌龟到达终点! 用时" + end + "ms");
     }
     render() {
         return (
             <div>
                 <div className="race">
-                    <Rabbit />
-                    <Referee />
-                    <Tortoise />
+                    <Rabbit castTime={this.state.cast_time1} />
+                    <Tortoise castTime={this.state.case_time2} />
                 </div>
                 <Track1 reach={this.reach_1.bind(this)} />
                 <Track2 reach={this.reach_2.bind(this)} />
@@ -42,8 +47,9 @@ class Rabbit extends React.Component {
                     <span role="img" aria-label="rabbit">
                         🐇
                     </span>
+                    用时
                 </h2>
-                <span>0</span>
+                <span>{this.props.castTime}</span>
             </div>
         );
     }
@@ -57,15 +63,12 @@ class Tortoise extends React.Component {
                     <span role="img" aria-label="tortoise">
                         🐢
                     </span>
+                    用时
                 </h2>
-                <span>0</span>
+                <span>{this.props.castTime}</span>
             </div>
         );
     }
-}
-
-function Referee() {
-    return <h2>裁判</h2>;
 }
 
 class Track1 extends React.Component {
@@ -78,7 +81,7 @@ class Track1 extends React.Component {
         };
         let N = 100;
         let timer = setInterval(() => {
-            N -= 20;
+            N -= 10;
             this.setState({
                 style: {
                     transform: `translateX(${N}%)`
