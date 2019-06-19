@@ -1,0 +1,23 @@
+body {
+  padding: 0;
+}
+
+.app {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.parent {
+  border: 1px solid grey;
+  padding: 20px;
+  margin: 20px;
+}
+
+.children {
+  border: 1px solid orange;
+  padding: 10px;
+  margin: 10px;
+}
