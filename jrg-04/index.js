@@ -1,5 +1,26 @@
 const money = {
-    amount: 100000
+    amount: 1000000
+};
+
+//
+const fnLists = {};
+const eventHub = {
+    triggle(eventName, data) {
+        let fnList = fnLists[eventName];
+        if (!fnList) {
+            return;
+        }
+        for (let i = 0; i < fnList.length; i++) {
+            fnList[i](data);
+        }
+    },
+
+    on(eventName, fn) {
+        if (!fnLists[eventName]) {
+            fnLists[eventName] = [];
+        }
+        fnLists[eventName].push(fn);
+    }
 };
 
 class App extends React.Component {
@@ -19,6 +40,11 @@ class Father extends React.Component {
         this.state = {
             money: money
         };
+        eventHub.on("spendMoney", data => {
+            this.setState({
+                money: money
+            });
+        });
     }
     render() {
         return (
@@ -57,15 +83,17 @@ class Boy_1 extends React.Component {
         };
     }
     spendMoney() {
-        money.amount -= 1000;
+        let amount = Math.round(Math.random() * 100000);
+        money.amount -= amount;
         this.setState({
             money: money
         });
+        eventHub.triggle("spendMoney", amount);
     }
     render() {
         return (
             <div className="children">
-                大儿子 {this.state.money.amount}
+                败家子 {this.state.money.amount}
                 <button onClick={this.spendMoney.bind(this)}>消费</button>
             </div>
         );
@@ -102,6 +130,11 @@ class Girl_2 extends React.Component {
         this.state = {
             money: money
         };
+        eventHub.on("spendMoney", data => {
+            this.setState({
+                money: money
+            });
+        });
     }
     render() {
         return <div className="children">二女儿 {this.state.money.amount}</div>;
