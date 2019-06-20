@@ -1,3 +1,4 @@
+// 发布订阅模式（Redux: action、payload...概念）
 const money = {
     amount: 1000000
 };
