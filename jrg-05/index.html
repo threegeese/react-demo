@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redux</title>
+</head>
+<body>
+  
+  <div id="app"></div>
+
+  <script src="https://cdn.bootcss.com/redux/4.0.1/redux.min.js"></script>
+  <script>
+
+    function render() {
+      let el = document.getElementById('app')
+      el.innerHTML = `
+        <div>
+          你点击 <span>0</span> 次
+          <div>
+            <button id="add">+1</button>
+            <button id="minus">-1</button>
+            <button id="addIfOdd">单数就+1</button>
+            <button id="addAfter">两秒后+1</button>
+          </div>
+        </div>
+      `
+    }
+
+    render()
+
+    // Redux
+    
+
+  </script>
+</body>
+</html>
