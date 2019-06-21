@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Redux</title>
+  <title>Redux + Vanilla</title>
 </head>
 <body>
   
@@ -15,21 +15,66 @@
       let el = document.getElementById('app')
       el.innerHTML = `
         <div>
-          你点击 <span>0</span> 次
+          你点击 <span>${store.getState()}</span> 次
           <div>
-            <button id="add">+1</button>
-            <button id="minus">-1</button>
-            <button id="addIfOdd">单数就+1</button>
-            <button id="addAfter">两秒后+1</button>
+            <button id="add" onClick="add()">+1</button>
+            <button id="minus" onClick="minus()">-1</button>
+            <button id="addIfOdd" onClick="addIfOdd()">单数就+1</button>
+            <button id="addAsync" onClick="addAsync()">两秒后+1</button>
           </div>
         </div>
       `
     }
-
-    render()
-
-    // Redux
     
+
+    /**
+     * Redux
+     */
+
+    // 发布订阅模式中的 EventHub（store）
+    let store = Redux.createStore(counter)
+    render()
+    store.subscribe(() => render())
+
+    function counter(state, action) {
+      if(state === undefined) {return 0}
+      switch(action.type) {
+        case 'add':
+          return state + action.payload
+          break
+        case 'minus':
+          return state - action.payload
+          break
+        case 'addIfOdd':
+          return state + action.payload
+          break
+        case 'addAsync':
+          return state + action.payload
+          break
+        default:
+          return state
+      }
+    }
+
+    function add() {
+      store.dispatch({type: 'add', payload: 1})
+    }
+
+    function minus() {
+      store.dispatch({ type: 'minus', payload: 1 })
+    }
+
+    function addIfOdd() {
+      if(store.getState() % 2 === 1) {
+        store.dispatch({ type: 'add', payload: 1})
+      }
+    }
+    
+    function addAsync() {
+      setTimeout(() => {
+        store.dispatch({ type: 'add', payload: 1 })
+      }, 2000);
+    }
 
   </script>
 </body>
