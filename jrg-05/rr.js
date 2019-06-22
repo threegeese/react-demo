@@ -12,9 +12,7 @@ render();
 store.subscribe(() => render());
 
 function reducer(state, action) {
-    if (state === undefined) {
-        return 0;
-    }
+    if (state === undefined) { return 0; }
     switch (action.type) {
         case "add":
             return state + action.payload;
@@ -54,8 +52,7 @@ function addAsync() {
 
 function render() {
     ReactDOM.render(
-        <App
-            value={store.getState()}
+        <App value={store.getState()}
             add={add}
             minus={minus}
             addIfOdd={addIfOdd}
@@ -72,31 +69,16 @@ function render() {
 import React from "react";
 
 class App extends React.Component {
-    add() {
-        this.props.add();
-    }
-
-    minus() {
-        this.props.minus();
-    }
-
-    addIfOdd() {
-        this.props.addIfOdd();
-    }
-
-    addAsync() {
-        this.props.addAsync();
-    }
 
     render() {
         return (
             <div>
                 你点击 <span>{this.props.value}</span> 次
                 <div>
-                    <button id="add" onClick={() => this.add()}> {" "} +1{" "} </button>
-                    <button id="minus" onClick={() => this.minus()}> {" "} -1{" "} </button>
-                    <button id="addIfOdd" onClick={() => this.addIfOdd()}> {" "} 单数就+1{" "} </button>
-                    <button id="addAsync" onClick={() => this.addAsync()}> {" "} 两秒后+1{" "} </button>
+                    <button id="add" onClick={() => this.props.add()}> {" "} +1{" "} </button>
+                    <button id="minus" onClick={() => this.props.minus()}> {" "} -1{" "} </button>
+                    <button id="addIfOdd" onClick={() => this.props.addIfOdd()}> {" "} 单数就+1{" "} </button>
+                    <button id="addAsync" onClick={() => this.props.addAsync()}> {" "} 两秒后+1{" "} </button>
                 </div>
             </div>
         );
