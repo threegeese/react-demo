@@ -48,7 +48,7 @@ import React from "react"
 import { connect } from "react-redux";
 
 class App extends React.Component {
-	render() {
+  render() {
     return (
       <div>
         你点击 <span>{this.props.n}</span> 次
@@ -59,27 +59,27 @@ class App extends React.Component {
           <button id="addAsync" onClick={() => this.props.addAsync()}> 两秒后+1 </button>
         </div>
       </div>
-		);
-	}
+    );
+  }
 }
 
 function mapStateToProps(state) {
-	return {
-		n: state.n
-	}
+  return {
+    n: state.n
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-	return {
-		add: () => dispatch({ type: 'add', payload: 1 }),
-		minus: () => dispatch({ type: 'minus', payload: 1 }),
-		addIfOdd: () => dispatch({ type: 'addIfOdd', payload: 1 }),
-		addAsync: () => {
-			setTimeout(() => {
-				dispatch({ type: 'addAsync', payload: 1 })
-			}, 2000);
-		},
-	}
+  return {
+    add: () => dispatch({ type: 'add', payload: 1 }),
+    minus: () => dispatch({ type: 'minus', payload: 1 }),
+    addIfOdd: () => dispatch({ type: 'addIfOdd', payload: 1 }),
+    addAsync: () => {
+      setTimeout(() => {
+        dispatch({ type: 'addAsync', payload: 1 })
+      }, 2000);
+    },
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
