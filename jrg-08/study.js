@@ -5,15 +5,15 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import "./index.css"
 
 function HomePage() {
-  return <div class="showPage">首页</div>
+  return <div className="showPage">首页</div>
 }
 
 function Login() {
-  return <div class="showPage">登录</div>
+  return <div className="showPage">登录</div>
 }
 
 function SignUp() {
-  return <div class="showPage">注册</div>
+  return <div className="showPage">注册</div>
 }
 
 
