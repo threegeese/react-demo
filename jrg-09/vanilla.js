@@ -24,7 +24,7 @@ div.querySelector("button").onclick = ()=> {
 // destroy
 div.querySelectorAll("button")[1].onclick = ()=> {
   div.querySelector("button").onclick = null
-  div.querySelectorAll("button").onclick[1] = null
+  div.querySelectorAll("button")[1].onclick = null
   div.remove()
   div = null
 }
