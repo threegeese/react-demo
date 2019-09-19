@@ -7,7 +7,8 @@ import './index.css'
 // import Clock from './clock.js'
 // import TemperatureCalculator from './components/TemperatureCalculator.js'
 // import TestContext from './components/TextContext.js'
-import ErrorBoundary from './components/ErrorBoundary.js'
+// import ErrorBoundary from './components/ErrorBoundary.js'
+import RenderProps from './components/RenderProps.js'
 
 
 
@@ -15,4 +16,5 @@ import ErrorBoundary from './components/ErrorBoundary.js'
 // ReactDOM.render(<Clock />, document.getElementById('root'))
 // ReactDOM.render(<TemperatureCalculator />, document.getElementById('root'))
 // ReactDOM.render(<TestContext />, document.getElementById('root'))
-ReactDOM.render(<ErrorBoundary>nihk</ErrorBoundary>, document.getElementById('root'))
+// ReactDOM.render(<ErrorBoundary>nihk</ErrorBoundary>, document.getElementById('root'))
+ReactDOM.render(<RenderProps/>, document.getElementById('root'))
